@@ -1,14 +1,16 @@
-// import css from './Filter.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { filter } from 'redux/filterSlice';
+import { getFilter } from 'redux/selectors';
 
-const Filter = props => {
-  const { onFilterChange } = props;
+export const Filter = () => {
+  const dispatch = useDispatch();
+  const filterValue = useSelector(getFilter);
+
   return (
     <input
-      onChange={e => onFilterChange(e)}
+      value={filterValue}
+      onChange={e => dispatch(filter(e.currentTarget.value))}
       type="text"
-      value={props.filterInput}
     />
   );
 };
-
-export default Filter;

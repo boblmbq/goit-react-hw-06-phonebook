@@ -4,11 +4,9 @@ import { getFilter } from 'redux/selectors';
 
 export const Filter = () => {
   const dispatch = useDispatch();
-  const filterValue = useSelector(getFilter);
 
   return (
     <input
-      value={filterValue}
       onChange={e => dispatch(filter(e.currentTarget.value))}
       type="text"
     />
